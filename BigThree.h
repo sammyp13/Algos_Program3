@@ -5,7 +5,7 @@ using namespace std;
 
 // store a digit between '0' and '2'
 class BigThreeDigit {
-  friend ostream& operator<<(ostream&, BigThreeDigit&);
+    friend ostream &operator<<(ostream &, BigThreeDigit &);
 
 public:
 
@@ -21,25 +21,23 @@ public:
     bool isZero();
 
     // add the current digit with d, return a new digit that store the value, plue whether there is a carry
-    pair<BigThreeDigit, bool>  add(BigThreeDigit d) ;
+    pair<BigThreeDigit, bool> add(BigThreeDigit d);
 
     // increment digit by one, return a new digit that store the value, plue whether there is a carry
-    pair<BigThreeDigit, bool>  incr();
+    pair<BigThreeDigit, bool> incr();
 
     // subtract d from the current digit, return a new digit that store the value, plue whether there is a borrow necessary
-    pair<BigThreeDigit, bool>  sub(BigThreeDigit d) ;
+    pair<BigThreeDigit, bool> sub(BigThreeDigit d);
 
     // decrement digit by one, return a new digit that store the value, plue whether there is a borrow necessary
-    pair<BigThreeDigit, bool>  decr(); 
+    pair<BigThreeDigit, bool> decr();
 
     // multiply the current digit with d, return a new digit that store the value, plue whether there is a carry
-    pair<BigThreeDigit, bool>  multiply(BigThreeDigit d) ;
-
-
+    pair<BigThreeDigit, bool> multiply(BigThreeDigit d);
 
 
 private:
-     int  c;
+    int c;
 };
 
 
@@ -50,56 +48,59 @@ private:
 */
 
 class BigThree {
-  friend ostream& operator<<(ostream&, BigThree&);
+    friend ostream &operator<<(ostream &, BigThree &);
 
 public:
-  
-   // Initialize a new number, set it to zero
-   BigThree() ;
 
-   // Convert a string into the number
-   // Notice that the number is represented in the string in normal order
-   // e.g. the number 10 should be represented as the string as "10"
-   //      but will be stored in the vector as 0-1
- 
-   BigThree(string t);
+    // Initialize a new number, set it to zero
+    BigThree();
 
-   // copy constructor
-   BigThree(const BigThree& bt);
+    // Convert a string into the number
+    // Notice that the number is represented in the string in normal order
+    // e.g. the number 10 should be represented as the string as "10"
+    //      but will be stored in the vector as 0-1
 
-   // assignement of bt to the current number. 
-   BigThree& operator=(BigThree &bt);
+    BigThree(string t);
 
-   // add the numebr bt to the current number, return a new number (current number not modified)
-   BigThree operator+(BigThree& bt);
+    // copy constructor
+    BigThree(const BigThree &bt);
 
-   // subtract the number bt to the current number, return a new number (current number not modified)
-   // notice that it assume bt is smaller than the number
-   // otherwise it will return an error and quit
-   BigThree operator-(BigThree& bt);
+    // assignement of bt to the current number.
+    BigThree &operator=(BigThree &bt);
 
-   // remove the zeros at the front of the number (in this case at the end of the error
-   // for example: 00121 becomes 121
-   void RemoveFrontZeros();
+    // add the numebr bt to the current number, return a new number (current number not modified)
+    BigThree operator+(BigThree &bt);
 
-   // Add n zeros to the right of the number
-   // e.g. if number is 1010, then AddZero(3) will change the number to 1010000
-   void AddZeros(int n);
+    // subtract the number bt to the current number, return a new number (current number not modified)
+    // notice that it assume bt is smaller than the number
+    // otherwise it will return an error and quit
+    BigThree operator-(BigThree &bt);
 
-   // add the numebr bt to the current number, return a new number (current number not modified)
-   BigThree operator*(BigThreeDigit& d);
+    // remove the zeros at the front of the number (in this case at the end of the error
+    // for example: 00121 becomes 121
+    void RemoveFrontZeros();
 
-   pair<BigThree, BigThree> split(int d);
+    // Add n zeros to the right of the number
+    // e.g. if number is 1010, then AddZero(3) will change the number to 1010000
+    void AddZeros(int n);
 
-   // Methods you need to implement
+    // add the numebr bt to the current number, return a new number (current number not modified)
+    BigThree operator*(BigThreeDigit &d);
 
-   BigThree(long  x);
-   BigThree SimpleMultiply(BigThree& b);
-   BigThree RecursiveMultiply(BigThree& b);
-   BigThree FasterRecursiveMultiply(BigThree& b);
+    pair<BigThree, BigThree> split(int d);
+
+    // Methods you need to implement
+
+    BigThree(long x);
+
+    BigThree SimpleMultiply(BigThree &b);
+
+    BigThree RecursiveMultiply(BigThree &b);
+
+    BigThree FasterRecursiveMultiply(BigThree &b);
 
 private:
-   vector<BigThreeDigit> s;
+    vector<BigThreeDigit> s;
 };
 
 
